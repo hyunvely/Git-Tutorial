@@ -1,1 +1,45 @@
-ㅎㅎ
+#include    <stdio.h>
+#include    <conio.h>
+#include    <stdlib.h>
+#include    <time.h>
+
+char*    g_FingerMotion[3]  =    {    "가위", "바위", "보"        };
+char*    g_Result[3][3]     =    {    "비겼다", "졌다", "이겼다",
+                                      "이겼다", "비겼다", "졌다",
+                                      "졌다", "이겼다", "비겼다"
+                                 };
+
+void    main()
+{
+   int    User        =    0;
+   int    Computer    =    0;
+
+   srand( time( NULL ) );
+   
+   while( 1 )
+   {
+       system( "cls" );
+
+       printf("가위[0], 바위[1], 보[2], 종료[3]\n" );
+       printf("입력: " );
+       scanf( "%d", &User );
+
+       if( User == 3 )    break;
+       if( User < 0 || User > 3 )
+       {
+           printf( "잘못 입력하셨습니다. 다시입력해주세요.\n" );
+           printf( "Press any key" );
+           getch();
+           continue;
+       }
+
+       Computer    =    rand() % 3;
+
+       printf("컴퓨터 : %s\n", g_FingerMotion[ Computer ] );
+       printf("유저 : %s\n", g_FingerMotion[ User ] );
+       printf("결과 : %s\n", g_Result[ User ][ Computer ] );
+       printf( "Press any key" );
+
+       getch();
+   }
+}
